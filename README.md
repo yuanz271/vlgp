@@ -4,11 +4,10 @@
 
 This package is written by Yuan Zhao ([yuan.zhao@stonybrook.edu](yuan.zhao@stonybrook.edu])). 
 It contains methods of variational Latent Gaussian Process (vLGP) model based on Yuan Zhao and Il Memming Park's ([memming.park@stonybrook.edu](memming.park@stonybrook.edu)) work.
-It has been developed and implemented with the goal of recovering dynamics from population spike trains. 
-
-See
 
 Yuan Zhao and Il Memming Park. Variational Latent Gaussian Process for Recovering Single-Trial Dynamics from Population Spike Trains. [arXiv:1604.03053v1](https://arxiv.org/abs/1604.03053) [stat.ML]
+
+For V1 recording, see the trajectories visualized in 3D that show how signal and noise are dynamically encoded in the state space. [https://www.youtube.com/watch?v=ml66qLLpTr8](https://www.youtube.com/watch?v=ml66qLLpTr8)
 
 The code is written in Python 3. It needs further testing and is subject to change.
 
