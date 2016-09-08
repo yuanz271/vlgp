@@ -129,7 +129,7 @@ def rotate(obj, ref):
     Returns:
 
     """
-    return obj.dot(lstsq(obj, ref)[0])
+    return obj @ lstsq(obj, ref)[0]
 
 
 def add_constant(x):
@@ -169,19 +169,6 @@ def lagmat(x, lag):
     stoprow = nrow + lag - k
 
     return mat[startrow:stoprow, ncol:]
-
-
-def align(x):
-    x = asarray(x)
-    ax = x.copy()
-    if ax.ndim < 3:
-        return ax
-    else:
-        ntrial = ax.shape[0]
-        for i in range(1, ntrial):
-            diff = ax[i - 1, -1, :] - ax[i, 0, :]
-            ax[i, :, :] += diff
-    return ax
 
 
 def save(obj, fname):
