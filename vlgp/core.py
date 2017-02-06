@@ -686,7 +686,7 @@ def fit(y,
                      mu=mu,
                      w=w,
                      v=v,
-                     L=empty((ntrial, dyn_ndim, nbin, rank)),
+                     # L=empty((ntrial, dyn_ndim, nbin, rank)),
                      a=a,
                      b=b,
                      noise=noise,
@@ -749,6 +749,17 @@ def postprocess(model_fit):
     dict
         fit that contains prior, posterior, loading and regression
     """
+    # calc_post_cov(model_fit)
+    keys = list(model_fit.keys())
+    for key in keys:
+        if model_fit.get(key, None) is None:
+            model_fit.pop(key, None)
+    model_fit.pop('h', None)
+    model_fit.pop('stat', None)
+    return model_fit
+
+
+def calc_post_cov(model_fit):
     ntrial, nbin, dyn_ndim = model_fit['mu'].shape
     prior = model_fit['chol']
     rank = prior[0].shape[-1]
@@ -768,13 +779,6 @@ def postprocess(model_fit):
             eigval.clip(0, PINF, out=eigval)  # remove negative eigenvalues
             L[trial, dyn_dim, :] = G @ (eigvec @ diag(sqrt(eigval)))
     model_fit['L'] = L
-    keys = list(model_fit.keys())
-    for key in keys:
-        if model_fit.get(key, None) is None:
-            model_fit.pop(key, None)
-    model_fit.pop('h', None)
-    model_fit.pop('stat', None)
-    return model_fit
 
 
 def predict(x, a, b, y=None, v=None):
