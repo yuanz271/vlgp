@@ -1,3 +1,5 @@
+# Moved to [https://github.com/catniplab/vlgp](https://github.com/catniplab/vlgp)
+
 # variational Latent Gaussian Process
 
 [![python 3.5](https://img.shields.io/badge/python-3.5-blue.svg?style=flat-square)]()
@@ -11,7 +13,7 @@ Il Memming Park's ([memming.park@stonybrook.edu](memming.park@stonybrook.edu)) w
 It has been developed with the goal of recovering dynamics from population spike trains. 
 
 ## Changes
-May 2, 2018
+2018
 - Redesign data structure in an incremental way that keeps all trial-wise information (e.g. trial ID, stimuli and etc.)
 - Allow trials to have different lengths
 - Deprecate HDF5 format
@@ -45,13 +47,3 @@ The function ```fit``` returns a dict that contains the latent dynamics, paramet
 
 The default options are recommended for the purpose of stability but not necessarily optimal.
 If any numerical error is raised, e.g. singular matrices, retry by changing the initial prior or other options.
- 
-## Modules
-
-| module     | function                                                                                      |
-|:-----------|-----------------------------------------------------------------------------------------------|
-| api        | ```fit``` function                                                                            |
-| core       | algorithm                                                                                     |
-| math       | link functions, incomplelte Cholesky decompostion, angle between subspaces, orthogonalization |
-| simulation | simulation of Gaussian process, Lorenz dynamics and spike trains                              |
-| util       | lag matrix construction, rotation, load and save                                              |
